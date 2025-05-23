@@ -57,7 +57,7 @@ export default function Index() {
           viewport={{ once: true }}
         >
           <div className="container mx-auto">
-            <p>Immersive Developer Gallery © {new Date().getFullYear()}</p>
+            <p>Yashpalsingh Pawara Portfolio © {new Date().getFullYear()}</p>
           </div>
         </motion.footer>
       </main>
