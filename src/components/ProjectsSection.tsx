@@ -46,7 +46,7 @@ export default function ProjectsSection() {
       image: teslaBotImg,
       tech: ["React 18", "TypeScript", "Node.js", "PostgreSQL", "OpenAI GPT", "AWS S3"],
       github: "https://github.com/yashu1412/Tesla-clone-with-AIChat-Assistant",
-      demo: "https://github.com/yashu1412/Tesla-clone-with-AIChat-Assistant",
+      demo: "https://tesla-clone-with-ai-chat-assistant-nu.vercel.app/",
       color: "#8a5cf6"
     },
     {
@@ -77,18 +77,9 @@ export default function ProjectsSection() {
       tech: ["React", "Node.js", "Express.js", "MongoDB", "Nodemailer", "TailwindCSS"],
       github: "https://github.com/yashu1412/Reminder-Me",
       demo: "https://reminder-me-ten.vercel.app/",
-      color: "#22c55e"
-    },
-    {
-      id: 6,
-      title: "MovieStack",
-      description: "A modern movie catalog application showcasing the latest and greatest films from around the world. Built with cutting-edge technologies for optimal performance and user experience.",
-      image: movieStackImg,
-      tech: ["Vite", "TypeScript", "React", "shadcn-ui", "TailwindCSS"],
-      github: "https://github.com/yashu1412/MovieStack",
-      demo: "https://movie-stack-gilt.vercel.app/",
-      color: "#ec4899"
+      color: "#6366f1"
     }
+      
   ];
   // GSAP animations for stagger effect
   useEffect(() => {
