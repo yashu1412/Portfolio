@@ -42,10 +42,10 @@ export default function Index() {
       {/* Main content */}
       <main>
         <HeroSection />
+        <AboutSection />
         <ProjectsSection />
         <SkillsSection />
         <CertificationsSection />
-        <AboutSection />
         <ContactSection />
         
         {/* Quick footer */}

@@ -4,12 +4,46 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import gsap from 'gsap';
+
+// Project images
 import studyNotionImg from "../assets/StudyNotion.png";
 import teslaBotImg from "../assets/Tesla.png";
 import ecomzyImg from "../assets/Ecomzy.png";
 import codeEditorImg from "../assets/CodeEditor.png";
 import reminderMeImg from "../assets/Reminder-me.png";
 import movieStackImg from "../assets/Movistack.png";
+import devToolsImg from "../assets/Devtool.png";
+
+
+// Animation variants
+const sectionVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.6,
+      when: "beforeChildren",
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { y: 30, opacity: 0 },
+  visible: { 
+    y: 0, 
+    opacity: 1,
+    transition: { duration: 0.6 }
+  },
+  hover: { 
+    y: -10,
+    transition: { duration: 0.3 }
+  }
+};
+
+/**
+ * Project interface defining the structure of project data
+ */
 interface Project {
   id: number;
   title: string;
@@ -22,11 +56,14 @@ interface Project {
   featured?: boolean;
 }
 
+/**
+ * ProjectsSection component that displays a grid of project cards with animations
+ */
 export default function ProjectsSection() {
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
   
-  // Sample projects data
+  // Projects data
   const projects: Project[] = [
     {
       id: 1,
@@ -78,10 +115,22 @@ export default function ProjectsSection() {
       github: "https://github.com/yashu1412/Reminder-Me",
       demo: "https://reminder-me-ten.vercel.app/",
       color: "#6366f1"
+    },
+    {
+      id: 6,
+      title: "DevTools",
+      description: "Created a comprehensive developer toolkit with utilities for code formatting, debugging, performance optimization, and API testing. Features include syntax highlighting, real-time collaboration, and cross-browser compatibility testing.",
+      image: devToolsImg, // Using an existing image as placeholder - replace with actual DevTools image when available
+      tech: ["React", "TypeScript", "Node.js", "Express.js", "Redux", "Jest"],
+      github: "https://github.com/yashu1412/TECH-AT-PLAY-DEV-tool",
+      demo: "https://tech-at-play-dev-tool-git-main-yashpawaras-projects.vercel.app/",
+      color: "#ec4899"
     }
       
   ];
-  // GSAP animations for stagger effect
+  /**
+   * GSAP animations for stagger effect on project cards
+   */
   useEffect(() => {
     if (!projectsRef.current) return;
     
@@ -102,30 +151,34 @@ export default function ProjectsSection() {
       }
     );
   }, []);
-  
-  const sectionVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
-  };
 
-  const cardVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: { duration: 0.6 }
-    },
-    hover: { 
-      y: -10,
-      transition: { duration: 0.3 }
-    }
+  /**
+   * Renders technology tags for a project
+   * @param project - The project to render tags for
+   * @returns JSX elements for the tech tags
+   */
+  const renderTechTags = (project: Project) => {
+    return (
+      <>
+        {project.tech.slice(0, 3).map((tech, i) => (
+          <span 
+            key={i} 
+            className="text-xs py-1 px-2 rounded-full bg-muted text-foreground/80"
+            style={{ 
+              backgroundColor: `${project.color}20`,
+              color: project.color 
+            }}
+          >
+            {tech}
+          </span>
+        ))}
+        {project.tech.length > 3 && (
+          <span className="text-xs py-1 px-2 rounded-full bg-muted/50 text-foreground/60">
+            +{project.tech.length - 3}
+          </span>
+        )}
+      </>
+    );
   };
 
   return (
@@ -149,7 +202,7 @@ export default function ProjectsSection() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            Featured <span className="gradient-text">Projects</span>
+            <span className="gradient-text">Projects</span>
           </motion.h2>
           <motion.p 
             className="text-foreground/70 max-w-2xl mx-auto"
@@ -216,23 +269,7 @@ export default function ProjectsSection() {
                   
                   {/* Tech tags */}
                   <div className="flex flex-wrap gap-2">
-                    {project.tech.slice(0, 3).map((tech, i) => (
-                      <span 
-                        key={i} 
-                        className="text-xs py-1 px-2 rounded-full bg-muted text-foreground/80"
-                        style={{ 
-                          backgroundColor: `${project.color}20`,
-                          color: project.color 
-                        }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.tech.length > 3 && (
-                      <span className="text-xs py-1 px-2 rounded-full bg-muted/50 text-foreground/60">
-                        +{project.tech.length - 3}
-                      </span>
-                    )}
+                    {renderTechTags(project)}
                   </div>
                   
                   {/* Links */}

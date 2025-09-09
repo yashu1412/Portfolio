@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink } from "lucide-react";
 
 export default function AboutSection() {
   return (
@@ -21,8 +21,8 @@ export default function AboutSection() {
             <CardContent className="pt-6">
               <div className="flex flex-col md:flex-row gap-6 mb-6">
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-2">Yashpal Singh Pawara</h3>
-                  <p className="text-lg font-medium text-primary mb-4">Full Stack Developer</p>
+                  <h3 className="text-2xl font-bold mb-2">YASHPALSINGH PAWARA</h3>
+                  <p className="text-lg font-medium text-primary mb-4">B.Tech - Electronics and Communication Engineering</p>
                   
                   <div className="space-y-2 text-muted-foreground">
                     <div className="flex items-center gap-2">
@@ -51,42 +51,59 @@ export default function AboutSection() {
               
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-semibold mb-3">Introduction</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Passionate Full Stack Developer with specialized expertise in JavaScript ecosystems (React, Node.js, Express) and seamless API integration. Adept at architecting high-performance, responsive web applications that prioritize user experience. Seeking challenging opportunities to leverage my technical proficiency in developing scalable solutions that drive business growth while maintaining code quality and optimization standards.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="text-xl font-semibold mb-3">Core Values</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {["Innovation", "Clean Code", "User Experience", "Performance", "Accessibility"].map((value) => (
-                      <Badge key={value} variant="secondary" className="text-sm">
-                        {value}
-                      </Badge>
-                    ))}
+                  <h3 className="text-xl font-semibold mb-3">Education</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <div className="flex justify-between items-start">
+                        <h4 className="font-medium">IIITDM Jabalpur</h4>
+                        <span className="text-sm text-muted-foreground">Nov 2022 - Aug 2026 (Expected)</span>
+                      </div>
+                      <p className="text-primary font-medium">B.Tech - Electronics and Communication Engineering</p>
+                      <p className="text-sm text-muted-foreground">Jabalpur, India</p>
+                    </div>
+                    <div>
+                      <div className="flex justify-between items-start">
+                        <h4 className="font-medium">Kendriya Vidyalaya Sangathan</h4>
+                        <span className="text-sm text-muted-foreground">Aug 2020 - Jul 2022</span>
+                      </div>
+                      <p className="text-primary font-medium">Higher Secondary Education (CBSE) PCMB</p>
+                      <p className="text-sm text-muted-foreground">Dhule, India</p>
+                    </div>
                   </div>
                 </div>
+                
+
                 
                 <div>
                   <h3 className="text-xl font-semibold mb-3">Experience</h3>
                   <div className="space-y-4">
                     <div>
                       <div className="flex justify-between items-start">
-                        <h4 className="font-medium">Internship Studio</h4>
-                        <span className="text-sm text-muted-foreground">September 2024 - October 2024</span>
+                        <h4 className="font-medium">Testbuddy Education Pvt Ltd</h4>
+                        <span className="text-sm text-muted-foreground">Jun 2025 - Jul 2025</span>
                       </div>
-                      <p className="text-primary font-medium">Website Design and Development</p>
-                      <p className="text-sm text-muted-foreground">Work from Home</p>
+                      <p className="text-primary font-medium">React.js & Next.js Developer Intern</p>
                       <ul className="list-disc list-inside space-y-2 text-muted-foreground mt-2">
-                        <li>Developed a responsive e-commerce website for clients achieving a 40% improvement in user engagement</li>
-                        <li>Implemented ReactJS and NodeJS for seamless front-end and back-end integration, enhancing load speed by 25%</li>
-                        <li>Conducted usability analysis on site navigation, identifying key areas for UI/UX improvement, resulting in a more intuitive user experience</li>
-                        <li>Presented project outcomes and insights at the internship conclusion event, receiving recognition for innovation in design and development</li>
+                        <li>Engineered college prediction tools, interactive tests, blogs, and responsive web pages in React.js v18 & Next.js v14, serving 15K+ active users with optimized cross-device compatibility.</li>
+                        <li>Enhanced UI/UX and Enhanced frontend rendering, boosting engagement by 18% and session duration by 25%.</li>
+                        <li>Integrated REST APIs and containerized apps with Docker, improving load speed by 25%.</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div className="flex justify-between items-start">
+                        <h4 className="font-medium">Internship Studio</h4>
+                        <span className="text-sm text-muted-foreground">Sep 2024 - Oct 2024</span>
+                      </div>
+                      <p className="text-primary font-medium">Website Design and Development Intern</p>
+                      <ul className="list-disc list-inside space-y-2 text-muted-foreground mt-2">
+                        <li>Designed and developed responsive websites with modern UI/UX principles</li>
+                        <li>Implemented front-end features using React.js and integrated with backend APIs</li>
                       </ul>
                     </div>
                   </div>
                 </div>
+                
+
               </div>
             </CardContent>
           </Card>
