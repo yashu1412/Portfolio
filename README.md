@@ -23,7 +23,8 @@ It highlights my work with **React, Next.js, Node.js, PostgreSQL, and TailwindCS
 - **Name:** Yashpalsingh Pawara  
 - **Email:** yashpalsinghpawara@gmail.com  
 - **GitHub:** [yashu1412](https://github.com/yashu1412)  
-- **Portfolio:** [Link to Portfolio]([https://portfolio-git-main-yashpawaras-projects.vercel.app/])  
+- **Portfolio:** [Link to Portfolio](https://portfolio-git-main-yashpawaras-projects.vercel.app/)  
 
 ---
 ⭐ Feel free to fork or use this repo as inspiration for your own portfolio!
+
