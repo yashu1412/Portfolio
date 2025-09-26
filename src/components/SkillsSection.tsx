@@ -1,12 +1,10 @@
-
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '@/lib/utils';
-import { Code, Database, Terminal, Layers, Cpu, GitBranch, Server, Book } from 'lucide-react';
+import { Code, Database, Server } from 'lucide-react';
 
-// Initialize GSAP ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 interface Skill {
@@ -19,48 +17,37 @@ interface Skill {
 
 export default function SkillsSection() {
   const skillsRef = useRef<HTMLDivElement>(null);
-  
-  // Skills data organized by categories
+
   const skills: Skill[] = [
     // Programming & CS Fundamentals
-    { name: "JavaScript (ES6+)", level: 90, color: "#f7df1e", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
+    { name: "JavaScript", level: 90, color: "#f7df1e", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
     { name: "TypeScript", level: 85, color: "#3178c6", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
     { name: "C++", level: 80, color: "#00599c", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
-    { name: "Python", level: 82, color: "#3776ab", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
-    { name: "Data Structures & Algorithms", level: 85, color: "#2c3e50", icon: <Book size={18} />, category: "Programming & CS Fundamentals" },
-    { name: "Debugging", level: 88, color: "#e74c3c", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
-    { name: "System Design Principle", level: 80, color: "#9b59b6", icon: <Server size={18} />, category: "Programming & CS Fundamentals" },
-    
+    { name: "Data Structures & Algorithms", level: 85, color: "#2c3e50", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
+
     // Frameworks
-    { name: "React.js", level: 95, color: "#61dafb", icon: <Layers size={18} />, category: "Frameworks" },
-    { name: "Next.js", level: 85, color: "#000000", icon: <Layers size={18} />, category: "Frameworks" },
-    { name: "Node.js", level: 85, color: "#339933", icon: <Layers size={18} />, category: "Frameworks" },
-    { name: "Express.js", level: 83, color: "#000000", icon: <Layers size={18} />, category: "Frameworks" },
-    { name: "Spring MVC", level: 70, color: "#6db33f", icon: <Layers size={18} />, category: "Frameworks" },
-    { name: "Hibernate/JPA", level: 70, color: "#59666c", icon: <Layers size={18} />, category: "Frameworks" },
-    
+    { name: "Node.js", level: 85, color: "#339933", icon: <Code size={18} />, category: "Frameworks" },
+    { name: "Express.js", level: 80, color: "#000000", icon: <Code size={18} />, category: "Frameworks" },
+    { name: "React.js", level: 95, color: "#61dafb", icon: <Code size={18} />, category: "Frameworks" },
+    { name: "Next.js (Basic)", level: 70, color: "#000000", icon: <Code size={18} />, category: "Frameworks" },
+
     // Web Technologies
     { name: "HTML5", level: 92, color: "#e34c26", icon: <Code size={18} />, category: "Web Technologies" },
     { name: "CSS3", level: 90, color: "#264de4", icon: <Code size={18} />, category: "Web Technologies" },
-    { name: "RESTful APIs", level: 88, color: "#3498db", icon: <Server size={18} />, category: "Web Technologies" },
+    { name: "REST API", level: 88, color: "#3498db", icon: <Server size={18} />, category: "Web Technologies" },
     { name: "JWT Auth", level: 85, color: "#d63031", icon: <Server size={18} />, category: "Web Technologies" },
-    { name: "GraphQL", level: 80, color: "#e535ab", icon: <Server size={18} />, category: "Web Technologies" },
     { name: "TailwindCSS", level: 90, color: "#06b6d4", icon: <Code size={18} />, category: "Web Technologies" },
     { name: "Bootstrap", level: 85, color: "#7952b3", icon: <Code size={18} />, category: "Web Technologies" },
-    { name: "Vite", level: 82, color: "#646cff", icon: <Cpu size={18} />, category: "Web Technologies" },
-    
+
     // Database & DevOps
-    { name: "MongoDB", level: 90, color: "#47a248", icon: <Database size={18} />, category: "Database & DevOps" },
     { name: "PostgreSQL", level: 80, color: "#336791", icon: <Database size={18} />, category: "Database & DevOps" },
-    { name: "SQL", level: 85, color: "#f29111", icon: <Database size={18} />, category: "Database & DevOps" },
-    { name: "Git/GitHub", level: 88, color: "#f05032", icon: <GitBranch size={18} />, category: "Database & DevOps" },
-    { name: "Docker", level: 80, color: "#2496ed", icon: <Server size={18} />, category: "Database & DevOps" },
-    { name: "Postman", level: 85, color: "#ff6c37", icon: <Terminal size={18} />, category: "Database & DevOps" },
-    { name: "CI/CD pipelines", level: 78, color: "#40b5a4", icon: <GitBranch size={18} />, category: "Database & DevOps" },
-    { name: "Linux", level: 80, color: "#557c94", icon: <Terminal size={18} />, category: "Database & DevOps" }
+    { name: "MongoDB", level: 90, color: "#47a248", icon: <Database size={18} />, category: "Database & DevOps" },
+    { name: "Git/GitHub", level: 88, color: "#f05032", icon: <Code size={18} />, category: "Database & DevOps" },
+    { name: "Docker (Basic)", level: 70, color: "#2496ed", icon: <Code size={18} />, category: "Database & DevOps" },
+    { name: "Postman", level: 85, color: "#ff6c37", icon: <Code size={18} />, category: "Database & DevOps" },
+    { name: "Linux", level: 80, color: "#557c94", icon: <Code size={18} />, category: "Database & DevOps" }
   ];
 
-  // Get unique categories
   const categories = Array.from(new Set(skills.map(skill => skill.category)));
 
   // GSAP animation for progress bars
