@@ -87,7 +87,18 @@ export default function ProjectsSection() {
       color: "#8a5cf6"
     },
     {
-      id: 3,
+  id: 3,
+  title: "ShieldVision",
+  description: "Developed an AI-powered real-time surveillance dashboard for monitoring RTSP camera streams with object detection using YOLOv8 and OpenCV. Implemented Flask microservices for efficient frame processing, Node.js APIs for secure data management, and a React.js frontend for visual overlays and live analytics.",
+  image: ShieldVision, // You can replace this with your actual ShieldVision image
+  tech: ["React.js", "Node.js", "Flask", "MongoDB", "OpenCV", "YOLOv8", "Docker"],
+  github: "https://github.com/yashu1412/ShieldVision",
+  demo: "https://shield-vision.vercel.app/",
+  color: "#0ea5e9",
+  featured: true
+},
+    {
+      id: 4,
       title: "Ecomzy",
       description: "Developed a secure e-commerce platform with a shopping cart system, dynamic search and filtering, and automated email notifications. Features responsive design and seamless cross-device experience using ReactJS and TailwindCSS.",
       image: ecomzyImg,
@@ -97,7 +108,7 @@ export default function ProjectsSection() {
       color: "#64748b"
     },
     {
-      id: 4,
+      id: 5,
       title: "CodeEditor",
       description: "Developed an interactive web-based code editor with real-time coding, syntax highlighting, and auto-completion features. Built with ReactJS and Vite, featuring responsive design and immediate error feedback.",
       image: codeEditorImg,
@@ -105,16 +116,6 @@ export default function ProjectsSection() {
       github: "https://github.com/yashu1412/CodeEditor",
       demo: "https://yashpcodeditor.netlify.app/",
       color: "#eab308"
-    },
-    {
-      id: 5,
-      title: "Reminder-Me",
-      description: "A full-stack MERN application for scheduling reminders with email notifications. Features include CRUD operations for reminders, Nodemailer integration for email delivery, and secure environment configuration.",
-      image: reminderMeImg,
-      tech: ["React", "Node.js", "Express.js", "MongoDB", "Nodemailer", "TailwindCSS"],
-      github: "https://github.com/yashu1412/Reminder-Me",
-      demo: "https://reminder-me-ten.vercel.app/",
-      color: "#6366f1"
     },
     {
       id: 6,
@@ -340,3 +341,4 @@ export default function ProjectsSection() {
     </section>
   );
 }
+
