@@ -10,7 +10,7 @@ import studyNotionImg from "../assets/StudyNotion.png";
 import teslaBotImg from "../assets/Tesla.png";
 import ecomzyImg from "../assets/Ecomzy.png";
 import codeEditorImg from "../assets/CodeEditor.png";
-import reminderMeImg from "../assets/Reminder-me.png";
+import ShieldVision from "../assets/ShieldVision.png";
 import movieStackImg from "../assets/Movistack.png";
 import devToolsImg from "../assets/Devtool.png";
 
@@ -341,4 +341,5 @@ export default function ProjectsSection() {
     </section>
   );
 }
+
 
