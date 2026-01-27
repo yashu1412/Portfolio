@@ -12,7 +12,7 @@ import ecomzyImg from "../assets/Ecomzy.png";
 import codeEditorImg from "../assets/CodeEditor.png";
 import ShieldVision from "../assets/ShieldVision.png";
 import movieStackImg from "../assets/Movistack.png";
-import devToolsImg from "../assets/flightBooking.png";
+import flightBookingImg from "../assets/flightBooking.png";
 
 
 // Animation variants
@@ -347,6 +347,7 @@ const projects: Project[] = [
     </section>
   );
 }
+
 
 
 
