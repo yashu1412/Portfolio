@@ -23,7 +23,7 @@ export default function SkillsSection() {
     { name: "JavaScript", level: 90, color: "#f7df1e", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
     { name: "TypeScript", level: 85, color: "#3178c6", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
     { name: "C++", level: 80, color: "#00599c", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
-    { name: "Data Structures & Algorithms", level: 85, color: "#2c3e50", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
+    { name: "System Design Principle", level: 85, color: "#2c3e50", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
 
     // Frameworks
     { name: "Node.js", level: 85, color: "#339933", icon: <Code size={18} />, category: "Frameworks" },
@@ -203,3 +203,4 @@ export default function SkillsSection() {
     </section>
   );
 }
+
