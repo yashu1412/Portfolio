@@ -9,9 +9,19 @@ import ContactSection from "@/components/ContactSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import { motion } from "framer-motion";
 
+import MouseFollower from "@/components/ui/MouseFollower";
+
 export default function Index() {
   // Add scroll smoothing and prevent default behavior
   useEffect(() => {
+    const bar = document.querySelector('.progress') as HTMLElement | null;
+    const onScroll = () => {
+      const h = document.documentElement;
+      const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      if (bar) bar.style.setProperty('--p', `${p}%`);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -29,6 +39,7 @@ export default function Index() {
     });
     
     return () => {
+      window.removeEventListener('scroll', onScroll);
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.removeEventListener('click', function() {});
       });
@@ -37,6 +48,8 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
+      <MouseFollower />
+      <div className="progress" />
       <Navbar />
       
       {/* Main content */}

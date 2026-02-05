@@ -64,7 +64,7 @@ export default {
 				}
 			},
 			backgroundImage: {
-				'glow-conic': 'conic-gradient(from 180deg at 50% 50%, #8a5cf6 0deg, #d946ef 180deg, #8a5cf6 360deg)',
+				'glow-conic': 'conic-gradient(from 180deg at 50% 50%, #ff0000 0deg, #990000 180deg, #ff0000 360deg)',
 				'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
 				'noise': 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%\' height=\'100%\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
 			},

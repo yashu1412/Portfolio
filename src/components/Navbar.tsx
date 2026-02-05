@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Command } from 'cmdk';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [cmdOpen, setCmdOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +20,18 @@ export default function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setCmdOpen(true);
+      }
+      if (e.key === 'Escape') setCmdOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', onKey);
+    };
   }, []);
 
   const navLinks = [
@@ -33,13 +46,15 @@ export default function Navbar() {
   // Navbar background animation variants
   const navbarVariants = {
     initial: {
-      backgroundColor: "rgba(18, 18, 24, 0)",
+      backgroundColor: "rgba(0, 0, 0, 0)",
       boxShadow: "0 0 0 rgba(0, 0, 0, 0)",
+      borderBottom: "1px solid rgba(255, 255, 255, 0)",
     },
     scrolled: {
-      backgroundColor: "rgba(18, 18, 24, 0.8)",
-      boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-      backdropFilter: "blur(10px)",
+      backgroundColor: "rgba(0, 0, 0, 0.7)",
+      boxShadow: "0 4px 30px rgba(0, 0, 0, 0.5)",
+      backdropFilter: "blur(12px)",
+      borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
     }
   };
 
@@ -178,6 +193,78 @@ export default function Navbar() {
                   ))}
                 </motion.div>
               </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence>
+          {cmdOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm"
+              onClick={() => setCmdOpen(false)}
+            >
+              <motion.div
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                className="mx-auto mt-24 w-full max-w-xl px-4"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="rounded-xl border border-border bg-card/95 shadow-xl">
+                  <Command>
+                    <div className="flex items-center gap-2 px-3 py-2 border-b border-border">
+                      <svg className="w-4 h-4 text-muted-foreground" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
+                      </svg>
+                      <Command.Input placeholder="Type to jump…" className="bg-transparent outline-none text-sm flex-1 text-foreground placeholder:text-muted-foreground" />
+                      <span className="text-xs text-muted-foreground">Esc</span>
+                    </div>
+                    <Command.List className="max-h-[50vh] overflow-auto">
+                      <Command.Group heading="Navigate" className="text-xs text-muted-foreground px-3 py-2">
+                        <div className="grid">
+                          {navLinks.map((l) => (
+                            <Command.Item
+                              key={l.href}
+                              onSelect={() => {
+                                setCmdOpen(false);
+                                const target = document.querySelector(l.href);
+                                if (target) {
+                                  window.scrollTo({
+                                    top: target.getBoundingClientRect().top + window.pageYOffset - 80,
+                                    behavior: 'smooth'
+                                  });
+                                }
+                              }}
+                              className="px-3 py-2 text-sm text-foreground hover:bg-primary/10 cursor-pointer"
+                            >
+                              {l.name}
+                            </Command.Item>
+                          ))}
+                        </div>
+                      </Command.Group>
+                      <Command.Group heading="Social" className="text-xs text-muted-foreground px-3 py-2">
+                        <div className="grid">
+                          {socialLinks.map((s) => (
+                            <Command.Item
+                              key={s.label}
+                              onSelect={() => {
+                                setCmdOpen(false);
+                                window.open(s.href, '_blank');
+                              }}
+                              className="px-3 py-2 text-sm text-foreground hover:bg-primary/10 cursor-pointer"
+                            >
+                              {s.label}
+                            </Command.Item>
+                          ))}
+                        </div>
+                      </Command.Group>
+                    </Command.List>
+                  </Command>
+                </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>

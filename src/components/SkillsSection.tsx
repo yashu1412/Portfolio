@@ -1,206 +1,124 @@
-import { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { cn } from '@/lib/utils';
-import { Code, Database, Server } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from 'react';
+import { motion, useScroll } from 'framer-motion';
+import { Code, Database, Server, Terminal, Cpu, Globe, GitBranch, Layers, Layout } from 'lucide-react';
 
 interface Skill {
   name: string;
   level: number;
-  color: string;
-  icon?: React.ReactNode;
-  category?: string;
+  icon: React.ReactNode;
+  category: string;
 }
 
 export default function SkillsSection() {
-  const skillsRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
 
   const skills: Skill[] = [
     // Programming & CS Fundamentals
-    { name: "JavaScript", level: 90, color: "#f7df1e", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
-    { name: "TypeScript", level: 85, color: "#3178c6", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
-    { name: "C++", level: 80, color: "#00599c", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
-    { name: "System Design Principle", level: 85, color: "#2c3e50", icon: <Code size={18} />, category: "Programming & CS Fundamentals" },
+    { name: "JavaScript", level: 90, icon: <Code size={20} />, category: "Programming & CS Fundamentals" },
+    { name: "TypeScript", level: 85, icon: <Code size={20} />, category: "Programming & CS Fundamentals" },
+    { name: "C++", level: 80, icon: <Cpu size={20} />, category: "Programming & CS Fundamentals" },
+    { name: "Python", level: 85, icon: <Code size={20} />, category: "Programming & CS Fundamentals" },
+    { name: "System Design", level: 80, icon: <Layout size={20} />, category: "Programming & CS Fundamentals" },
 
     // Frameworks
-    { name: "Node.js", level: 85, color: "#339933", icon: <Code size={18} />, category: "Frameworks" },
-    { name: "Express.js", level: 80, color: "#000000", icon: <Code size={18} />, category: "Frameworks" },
-    { name: "React.js", level: 95, color: "#61dafb", icon: <Code size={18} />, category: "Frameworks" },
-    { name: "Next.js (Basic)", level: 70, color: "#000000", icon: <Code size={18} />, category: "Frameworks" },
+    { name: "Node.js", level: 85, icon: <Server size={20} />, category: "Frameworks" },
+    { name: "Express.js", level: 80, icon: <Server size={20} />, category: "Frameworks" },
+    { name: "React.js", level: 95, icon: <Globe size={20} />, category: "Frameworks" },
+    { name: "Next.js", level: 80, icon: <Globe size={20} />, category: "Frameworks" },
+    { name: "Vue.js", level: 75, icon: <Globe size={20} />, category: "Frameworks" },
+    { name: "Agile", level: 85, icon: <GitBranch size={20} />, category: "Frameworks" },
 
     // Web Technologies
-    { name: "HTML5", level: 92, color: "#e34c26", icon: <Code size={18} />, category: "Web Technologies" },
-    { name: "CSS3", level: 90, color: "#264de4", icon: <Code size={18} />, category: "Web Technologies" },
-    { name: "REST API", level: 88, color: "#3498db", icon: <Server size={18} />, category: "Web Technologies" },
-    { name: "JWT Auth", level: 85, color: "#d63031", icon: <Server size={18} />, category: "Web Technologies" },
-    { name: "TailwindCSS", level: 90, color: "#06b6d4", icon: <Code size={18} />, category: "Web Technologies" },
-    { name: "Bootstrap", level: 85, color: "#7952b3", icon: <Code size={18} />, category: "Web Technologies" },
-
+    { name: "HTML5", level: 95, icon: <Layout size={20} />, category: "Web Technologies" },
+    { name: "CSS3", level: 95, icon: <Layout size={20} />, category: "Web Technologies" },
+    { name: "RESTful APIs", level: 90, icon: <Server size={20} />, category: "Web Technologies" },
+    { name: "JWT Auth", level: 85, icon: <Server size={20} />, category: "Web Technologies" },
+    { name: "TailwindCSS", level: 90, icon: <Layers size={20} />, category: "Web Technologies" },
+    { name: "Bootstrap", level: 85, icon: <Layout size={20} />, category: "Web Technologies" },
+    { name: "Vite", level: 85, icon: <Terminal size={20} />, category: "Web Technologies" },
+    
     // Database & DevOps
-    { name: "PostgreSQL", level: 80, color: "#336791", icon: <Database size={18} />, category: "Database & DevOps" },
-    { name: "MongoDB", level: 90, color: "#47a248", icon: <Database size={18} />, category: "Database & DevOps" },
-    { name: "Git/GitHub", level: 88, color: "#f05032", icon: <Code size={18} />, category: "Database & DevOps" },
-    { name: "Docker (Basic)", level: 70, color: "#2496ed", icon: <Code size={18} />, category: "Database & DevOps" },
-    { name: "Postman", level: 85, color: "#ff6c37", icon: <Code size={18} />, category: "Database & DevOps" },
-    { name: "Linux", level: 80, color: "#557c94", icon: <Code size={18} />, category: "Database & DevOps" }
+    { name: "PostgreSQL", level: 80, icon: <Database size={20} />, category: "Database & DevOps" },
+    { name: "MongoDB", level: 90, icon: <Database size={20} />, category: "Database & DevOps" },
+    { name: "SQL", level: 85, icon: <Database size={20} />, category: "Database & DevOps" },
+    { name: "Git/GitHub", level: 88, icon: <GitBranch size={20} />, category: "Database & DevOps" },
+    { name: "Docker", level: 75, icon: <Terminal size={20} />, category: "Database & DevOps" },
+    { name: "Flask", level: 75, icon: <Server size={20} />, category: "Database & DevOps" },
+    { name: "Postman", level: 85, icon: <Terminal size={20} />, category: "Database & DevOps" },
+    { name: "Linux", level: 80, icon: <Terminal size={20} />, category: "Database & DevOps" },
   ];
 
   const categories = Array.from(new Set(skills.map(skill => skill.category)));
 
-  // GSAP animation for progress bars
-  useEffect(() => {
-    if (!skillsRef.current) return;
-    
-    const bars = skillsRef.current.querySelectorAll('.skill-progress-bar');
-    
-    bars.forEach((bar) => {
-      const level = parseInt(bar.getAttribute('data-level') || '0');
-      
-      gsap.fromTo(bar, 
-        { width: '0%' },
-        { 
-          width: `${level}%`,
-          duration: 1.2,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: bar,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-    });
-    
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
-  }, []);
-
-  const sectionVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const skillVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: { duration: 0.6 }
-    }
-  };
-
-  const categoryVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
-    <section id="skills" className="py-20 relative bg-card/30">
-      {/* Background effect */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(20,184,166,0.15),rgba(255,255,255,0))] z-0"></div>
+    <section id="skills" className="py-24 relative overflow-hidden bg-black text-white" ref={containerRef}>
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-red-900/10 via-black to-black opacity-50"></div>
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20 pointer-events-none"></div>
       
-      <motion.div
-        className="container mx-auto px-4"
-        variants={sectionVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        ref={skillsRef}
-      >
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-4 font-display"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            Technical <span className="gradient-text">Skills</span>
-          </motion.h2>
-          <motion.p 
-            className="text-foreground/70 max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Motivated Full Stack Developer with expertise in various programming languages, frameworks, databases, and tools.
-          </motion.p>
-        </div>
-        
-        {/* Skills by category */}
-        <div className="space-y-12 max-w-4xl mx-auto">
-          {categories.map((category, categoryIndex) => (
+      {/* Floating Orbs */}
+      <div className="absolute top-1/4 -left-20 w-64 h-64 bg-primary/20 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-1/4 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none animate-pulse delay-700"></div>
+
+      <div className="container px-4 mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center mb-20 text-center"
+        >
+          <span className="text-primary text-sm font-mono tracking-wider uppercase mb-2">My Arsenal</span>
+          <h2 className="text-4xl md:text-6xl font-bold font-display tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-white/80 to-white/40">
+            Technical <span className="text-primary">Skills</span>
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {categories.map((category, idx) => (
             <motion.div 
-              key={category} 
-              variants={categoryVariants}
-              className="mb-10"
+              key={category}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="group relative"
             >
-              <h3 className="text-xl font-semibold mb-6 border-l-4 border-primary pl-3">{category}</h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {skills
-                  .filter(skill => skill.category === category)
-                  .map((skill, index) => (
-                    <motion.div
-                      key={skill.name}
-                      variants={skillVariants}
-                      className="space-y-2"
-                    >
-                      <div className="flex justify-between mb-1 items-center">
-                        <span className="font-medium flex items-center gap-2">
-                          {skill.icon && <span className="text-foreground/70">{skill.icon}</span>}
-                          {skill.name}
-                        </span>
-                        <span className="text-sm text-foreground/70">{skill.level}%</span>
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl -z-10 blur-sm group-hover:blur-md transition-all duration-500"></div>
+              <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-primary/50 transition-all duration-500 h-full relative overflow-hidden">
+                 {/* Hover Glow */}
+                <div className="absolute -right-10 -top-10 w-32 h-32 bg-primary/10 rounded-full blur-[50px] group-hover:bg-primary/20 transition-all duration-500"></div>
+                
+                <h3 className="text-xl font-bold mb-6 flex items-center gap-3 text-white">
+                  <span className="p-2 rounded-lg bg-primary/10 text-primary border border-primary/20">
+                    {category === "Programming & CS Fundamentals" && <Cpu size={18} />}
+                    {category === "Frameworks" && <Layers size={18} />}
+                    {category === "Web Technologies" && <Globe size={18} />}
+                    {category === "Database & DevOps" && <Database size={18} />}
+                  </span>
+                  {category}
+                </h3>
+
+                <div className="space-y-4">
+                  {skills.filter(s => s.category === category).map((skill) => (
+                    <div key={skill.name} className="group/skill">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-gray-400 group-hover/skill:text-primary transition-colors duration-300">{skill.icon}</span>
+                        <span className="font-medium text-gray-200">{skill.name}</span>
                       </div>
-                      
-                      <div className="h-2 bg-muted rounded-full overflow-hidden relative">
-                        <motion.div
-                          className={cn("skill-progress-bar h-full rounded-full relative")}
-                          style={{ backgroundColor: skill.color }}
-                          data-level={skill.level}
-                        ></motion.div>
-                        
-                        {/* Moving glow effect */}
-                        <motion.div 
-                          className="absolute top-0 bottom-0 w-5 bg-white opacity-30"
-                          animate={{
-                            left: ["0%", "100%"],
-                            opacity: [0, 0.3, 0],
-                          }}
-                          transition={{
-                            duration: 2,
-                            delay: (categoryIndex * 0.2) + (index * 0.1),
-                            repeat: Infinity,
-                            repeatDelay: 3
-                          }}
-                        ></motion.div>
-                      </div>
-                    </motion.div>
+                    </div>
                   ))}
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
-
