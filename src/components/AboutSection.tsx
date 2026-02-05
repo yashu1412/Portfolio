@@ -21,26 +21,48 @@ export default function AboutSection() {
   };
 
   const handleResumeDownload = async () => {
+    const filePath = "/Yashpalsinghpawara_22bec139.pdf";
     try {
-      const res = await fetch("/resume.pdf", { method: "HEAD" });
-      if (res.ok) {
-        const link = document.createElement("a");
-        link.href = "/resume.pdf";
-        link.download = "Yashpalsingh_Pawara_Resume.pdf";
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
-        toast({ title: "Resume download started" });
-      } else {
+      const res = await fetch(filePath);
+      if (!res.ok) {
         toast({
           title: "Resume not found",
-          description: "Add resume.pdf to the public folder to enable download",
+          description: "Place the PDF in the public folder with the exact filename.",
         });
+        return;
       }
+
+      const contentType = res.headers.get("content-type") || "";
+      if (!contentType.includes("pdf")) {
+        toast({
+          title: "Invalid file",
+          description: "The path serves HTML instead of PDF. Ensure the file exists in /public.",
+        });
+        return;
+      }
+
+      const blob = await res.blob();
+      if (blob.size === 0) {
+        toast({
+          title: "Empty file",
+          description: "The downloaded PDF is empty. Re-upload the correct file.",
+        });
+        return;
+      }
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Yashpalsingh_Pawara_Resume.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      toast({ title: "Resume downloaded" });
     } catch {
       toast({
         title: "Download failed",
-        description: "Network changed or server reload. Please try again.",
+        description: "Network issue or dev server reload. Please try again.",
       });
     }
   };
