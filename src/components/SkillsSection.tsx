@@ -17,39 +17,40 @@ export default function SkillsSection() {
   });
 
   const skills: Skill[] = [
-    // Programming & CS Fundamentals
-    { name: "JavaScript", level: 90, icon: <Code size={20} />, category: "Programming & CS Fundamentals" },
-    { name: "TypeScript", level: 85, icon: <Code size={20} />, category: "Programming & CS Fundamentals" },
-    { name: "C++", level: 80, icon: <Cpu size={20} />, category: "Programming & CS Fundamentals" },
-    { name: "Python", level: 85, icon: <Code size={20} />, category: "Programming & CS Fundamentals" },
-    { name: "System Design", level: 80, icon: <Layout size={20} />, category: "Programming & CS Fundamentals" },
+    // Programming & Core Concepts
+    { name: "JavaScript", level: 90, icon: <Code size={20} />, category: "Programming & Core Concepts" },
+    { name: "TypeScript", level: 85, icon: <Code size={20} />, category: "Programming & Core Concepts" },
+    { name: "C++", level: 80, icon: <Cpu size={20} />, category: "Programming & Core Concepts" },
+    { name: "Python", level: 85, icon: <Code size={20} />, category: "Programming & Core Concepts" },
+    { name: "SQL", level: 85, icon: <Database size={20} />, category: "Programming & Core Concepts" },
+    { name: "System Design (Basics)", level: 80, icon: <Layout size={20} />, category: "Programming & Core Concepts" },
 
-    // Frameworks
-    { name: "Node.js", level: 85, icon: <Server size={20} />, category: "Frameworks" },
-    { name: "Express.js", level: 80, icon: <Server size={20} />, category: "Frameworks" },
-    { name: "React.js", level: 95, icon: <Globe size={20} />, category: "Frameworks" },
-    { name: "Next.js", level: 80, icon: <Globe size={20} />, category: "Frameworks" },
-    { name: "Vue.js", level: 75, icon: <Globe size={20} />, category: "Frameworks" },
-    { name: "Agile", level: 85, icon: <GitBranch size={20} />, category: "Frameworks" },
+    // Frontend & UI Engineering
+    { name: "React.js", level: 95, icon: <Globe size={20} />, category: "Frontend & UI Engineering" },
+    { name: "Next.js", level: 80, icon: <Globe size={20} />, category: "Frontend & UI Engineering" },
+    { name: "Three.js", level: 75, icon: <Globe size={20} />, category: "Frontend & UI Engineering" },
+    { name: "TailwindCSS", level: 90, icon: <Layers size={20} />, category: "Frontend & UI Engineering" },
+    { name: "Framer Motion", level: 85, icon: <Layers size={20} />, category: "Frontend & UI Engineering" },
+    { name: "Zustand", level: 80, icon: <Database size={20} />, category: "Frontend & UI Engineering" },
+    { name: "HTML5", level: 95, icon: <Layout size={20} />, category: "Frontend & UI Engineering" },
 
-    // Web Technologies
-    { name: "HTML5", level: 95, icon: <Layout size={20} />, category: "Web Technologies" },
-    { name: "CSS3", level: 95, icon: <Layout size={20} />, category: "Web Technologies" },
-    { name: "RESTful APIs", level: 90, icon: <Server size={20} />, category: "Web Technologies" },
-    { name: "JWT Auth", level: 85, icon: <Server size={20} />, category: "Web Technologies" },
-    { name: "TailwindCSS", level: 90, icon: <Layers size={20} />, category: "Web Technologies" },
-    { name: "Bootstrap", level: 85, icon: <Layout size={20} />, category: "Web Technologies" },
-    { name: "Vite", level: 85, icon: <Terminal size={20} />, category: "Web Technologies" },
-    
-    // Database & DevOps
-    { name: "PostgreSQL", level: 80, icon: <Database size={20} />, category: "Database & DevOps" },
-    { name: "MongoDB", level: 90, icon: <Database size={20} />, category: "Database & DevOps" },
-    { name: "SQL", level: 85, icon: <Database size={20} />, category: "Database & DevOps" },
-    { name: "Git/GitHub", level: 88, icon: <GitBranch size={20} />, category: "Database & DevOps" },
-    { name: "Docker", level: 75, icon: <Terminal size={20} />, category: "Database & DevOps" },
-    { name: "Flask", level: 75, icon: <Server size={20} />, category: "Database & DevOps" },
-    { name: "Postman", level: 85, icon: <Terminal size={20} />, category: "Database & DevOps" },
-    { name: "Linux", level: 80, icon: <Terminal size={20} />, category: "Database & DevOps" },
+    // Backend & API Development
+    { name: "Node.js", level: 85, icon: <Server size={20} />, category: "Backend & API Development" },
+    { name: "FastAPI", level: 85, icon: <Server size={20} />, category: "Backend & API Development" },
+    { name: "Express.js", level: 80, icon: <Server size={20} />, category: "Backend & API Development" },
+    { name: "RESTful APIs", level: 90, icon: <Server size={20} />, category: "Backend & API Development" },
+    { name: "JWT Authentication", level: 85, icon: <Server size={20} />, category: "Backend & API Development" },
+    { name: "Redis", level: 80, icon: <Database size={20} />, category: "Backend & API Development" },
+
+    // Databases, AI & Infrastructure
+    { name: "PostgreSQL", level: 80, icon: <Database size={20} />, category: "Databases, AI & Infrastructure" },
+    { name: "RAG", level: 85, icon: <Cpu size={20} />, category: "Databases, AI & Infrastructure" },
+    { name: "Prisma ORM", level: 85, icon: <Database size={20} />, category: "Databases, AI & Infrastructure" },
+    { name: "MongoDB", level: 90, icon: <Database size={20} />, category: "Databases, AI & Infrastructure" },
+    { name: "Docker", level: 75, icon: <Terminal size={20} />, category: "Databases, AI & Infrastructure" },
+    { name: "Git/GitHub", level: 88, icon: <GitBranch size={20} />, category: "Databases, AI & Infrastructure" },
+    { name: "Linux", level: 80, icon: <Terminal size={20} />, category: "Databases, AI & Infrastructure" },
+    { name: "Postman", level: 85, icon: <Terminal size={20} />, category: "Databases, AI & Infrastructure" },
   ];
 
   const categories = Array.from(new Set(skills.map(skill => skill.category)));
@@ -79,7 +80,7 @@ export default function SkillsSection() {
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {categories.map((category, idx) => (
             <motion.div 
               key={category}
@@ -96,10 +97,10 @@ export default function SkillsSection() {
                 
                 <h3 className="text-xl font-bold mb-6 flex items-center gap-3 text-white">
                   <span className="p-2 rounded-lg bg-primary/10 text-primary border border-primary/20">
-                    {category === "Programming & CS Fundamentals" && <Cpu size={18} />}
-                    {category === "Frameworks" && <Layers size={18} />}
-                    {category === "Web Technologies" && <Globe size={18} />}
-                    {category === "Database & DevOps" && <Database size={18} />}
+                    {category === "Programming & Core Concepts" && <Cpu size={18} />}
+                    {category === "Frontend & UI Engineering" && <Layers size={18} />}
+                    {category === "Backend & API Development" && <Globe size={18} />}
+                    {category === "Databases, AI & Infrastructure" && <Database size={18} />}
                   </span>
                   {category}
                 </h3>

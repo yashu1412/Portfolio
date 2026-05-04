@@ -10,6 +10,8 @@ import ecomzyImg from "../assets/Ecomzy.png";
 import codeEditorImg from "../assets/CodeEditor.png";
 import flightBookingImg from "../assets/flightBooking.png";
 import ShieldVision from "../assets/ShieldVision.png";
+import talentIQImg from "../assets/TalentIQ.png";
+import weavyImg from "../assets/Weavy.png";
 
 interface Project {
   id: number;
@@ -28,7 +30,29 @@ export default function ProjectsSection() {
   
   const projects: Project[] = [
     {
+      id: 0,
+      title: "TalentIQ – AI Career Platform",
+      description: "   Implemented an 11-module AI platform for Resume Analysis and Job Matching, delivering automated 12-week personalized career roadmaps and context-driven ATS feedback. Built Live Interview Rooms with Stream Video, community Groups, and immersive 3D UI.",
+      image: talentIQImg,
+      tech: ["Next.js 15", "FastAPI", "Google Gemini API", "PostgreSQL", "RAG", "Stream SDK", "Redis", "Three.js", "Clerk"],
+      github: "https://github.com/yashu1412/TalentIQ",
+      demo: "https://talent-iq.vercel.app/",
+      color: "#3b82f6",
+      featured: true,
+    },
+    {
       id: 1,
+      title: "Weavy – LLM Workflow Builder",
+      description: "  Built a visual drag-and-drop workflow builder for creating and executing LLM-powered automation pipelines with real-time tracking and parallel execution.",
+      image: weavyImg,
+      tech: ["React Flow", "Next.js", "Trigger.dev", "PostgreSQL", "Prisma", "Google Gemini", "FFmpeg"],
+      github: "https://github.com/yashu1412/weavy-clone",
+      demo: "https://weavy-clone-ptai.vercel.app/",
+      color: "#6366f1",
+      featured: true,
+    },
+    {
+      id: 2,
       title: "StudyNotion",
       description: "  Built a full-stack e-learning platform using the MERN stack, featuring course purchases, progress tracking, reviews, and secure Razorpay payments.",
       image: studyNotionImg,
@@ -39,7 +63,7 @@ export default function ProjectsSection() {
       featured: true,
     },
     {
-      id: 2,
+      id: 3,
       title: "Tesla Chat Bot",
       description: "   Engineered a Tesla-inspired web application with React 18, TypeScript, and Node.js featuring role-based access control and an AI-powered customer service chatbot.",
       image: teslaBotImg,
@@ -49,7 +73,7 @@ export default function ProjectsSection() {
       color: "#8a5cf6",
     },
     {
-      id: 3,
+      id: 4,
       title: "ShieldVision",
       description: "  Developed an AI-powered real-time surveillance dashboard for monitoring RTSP camera streams with object detection using YOLOv8 and OpenCV.",
       image: ShieldVision,
@@ -60,7 +84,7 @@ export default function ProjectsSection() {
       featured: true,
     },
     {
-      id: 4,
+      id: 5,
       title: "Flight Booking System",
       description: "  Built a full-stack flight booking system with real-time search, filtering, and booking workflows. Implemented JWT-based authentication and wallet payments.",
       image: flightBookingImg, 
@@ -70,7 +94,7 @@ export default function ProjectsSection() {
       color: "#22c55e",
     },
     {
-      id: 5,
+      id: 6,
       title: "Ecomzy",
       description: "  Developed a secure e-commerce platform with a shopping cart system, dynamic search and filtering, and automated email notifications.",
       image: ecomzyImg,
@@ -80,7 +104,7 @@ export default function ProjectsSection() {
       color: "#64748b",
     },
     {
-      id: 6,
+      id: 7,
       title: "CodeEditor",
       description: "  Developed an interactive web-based code editor with real-time coding, syntax highlighting, and auto-completion features.",
       image: codeEditorImg,
