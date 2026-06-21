@@ -36,7 +36,7 @@ export default function ProjectsSection() {
       image: talentIQImg,
       tech: ["Next.js 15", "FastAPI", "Google Gemini API", "PostgreSQL", "RAG", "Stream SDK", "Redis", "Three.js", "Clerk"],
       github: "https://github.com/yashu1412/TalentIQ",
-      demo: "https://talent-iq.vercel.app/",
+      demo: "https://talent-iq-yrp.vercel.app/",
       color: "#3b82f6",
       featured: true,
     },
